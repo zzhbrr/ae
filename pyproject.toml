@@ -1,0 +1,63 @@
+[build-system]
+requires = ["setuptools>=61.0, <70.0", "wheel", "torch==2.6.0", "py-cpuinfo", "numpy==1.26.4", "mkl-include>=2025.1.0", "onemkl-sycl-blas>=2025.1.0", "ninja>=1.11.1.4", "mkl>=2025.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "specmoe"
+version = "0.0.1"
+description = "SpecMoE" 
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+       "numpy==1.26.4",
+       "py-cpuinfo",
+       "torch==2.6.0",
+       "transformers",
+       "sglang==0.4.5.post3",
+       "psutil>=7.0.0",
+       "zmq>=0.0.0",
+       "uvloop>=0.21.0",
+       "setuptools>=80.3.0",
+       "pydantic>=2.11.4",
+       "fastapi>=0.115.12",
+       "pillow>=11.2.1",
+       "compressed-tensors>=0.9.4",
+       "dill==0.3.8",
+       "pynvml>=12.0.0",
+       "tensorboard>=2.19.0",
+       "torch-tb-profiler>=0.4.3",
+       "accelerate>=1.7.0",
+       "mkl-include>=2025.1.0",
+       "onemkl-sycl-blas>=2025.1.0",
+       "ninja>=1.11.1.4",
+       "mkl>=2025.1.0",
+       "sgl-kernel==0.1.2",
+       "cuda-python",
+       "datasets==3.6.0",
+       "matplotlib==3.10.3",
+       "pillow==11.2.1",
+       "seaborn==0.13.2",
+       "scikit-learn==1.7.1"
+]
+
+[tool.setuptools.packages.find]
+exclude = ["traces*", "notebooks*", "docs*", "dist*", "tests*"]
+
+[tool.wheel]
+exclude = ["traces*", "notebooks*", "docs*", "dist*", "tests*"]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
